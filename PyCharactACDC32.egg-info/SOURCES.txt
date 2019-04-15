@@ -1,7 +1,10 @@
+LICENSE
+MANIFEST.in
 README.md
 setup.py
-PyCharactACDC32/CharactMultiCore.py
-PyCharactACDC32/GuiCharactMulti.py
+PyCharactACDC32/CharactCore32.py
+PyCharactACDC32/GuiCharact32.py
+PyCharactACDC32/GuiCharact32.ui
 PyCharactACDC32/__init__.py
 PyCharactACDC32.egg-info/PKG-INFO
 PyCharactACDC32.egg-info/SOURCES.txt

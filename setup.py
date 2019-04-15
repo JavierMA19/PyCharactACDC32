@@ -26,7 +26,7 @@ Created on Thu Dec 21 18:30:42 2017
 
 from setuptools import setup, find_packages
 
-_version = '0.0.1'
+_version = '0.0.2'
 
 long_description = """
                    Library for GFET analysis tools                   
@@ -41,7 +41,7 @@ install_requires = ['numpy',
                     'deepdish',
                     ]
 
-console_scripts = ['GFETCharactGui32 = PyCharactACDC32.GuiCharactMulti:main',
+console_scripts = ['GFETCharactGui32 = PyCharactACDC32.GuiCharact32:main',
                   ]
 
 entry_points = {'console_scripts': console_scripts, }
