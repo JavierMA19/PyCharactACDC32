@@ -29,14 +29,14 @@ from setuptools import setup, find_packages
 _version = '0.0.2.1'
 
 long_description = """
-                   Library for GFET analysis tools
+                   Library for 32-channel GFET analysis tools
                    """
 
 install_requires = ['numpy',
                     'matplotlib',
                     'quantities>=0.12',
                     'scipy',
-                    'neo>=0.5.2',
+                    'neo==0.6.1',
                     'nixio',
                     'deepdish',
                     ]
