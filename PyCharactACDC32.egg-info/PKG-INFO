@@ -1,6 +1,6 @@
 Metadata-Version: 1.2
 Name: PyCharactACDC32
-Version: 0.0.2.1
+Version: 0.0.3
 Summary: Electrodes stimulation tools
 Home-page: https://github.com/jmartinezaguilar/PyCharactACDC32
 Author: Javier Martínez Aguilar
@@ -10,7 +10,7 @@ Maintainer-email: Javier.Martinez@imb-cnm.csic.es
 License: GPLv3
 Download-URL: https://github.com/jmartinezaguilar/PyCharactACDC32
 Description: 
-                           Library for GFET analysis tools                   
+                           Library for 32-channel GFET analysis tools(fix Dev1)
                            
 Platform: UNKNOWN
 Classifier: Development Status :: 3 - Alpha
