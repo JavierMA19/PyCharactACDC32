@@ -50,7 +50,8 @@ class ReadAnalog(Daq.Task):
         Daq.Task.__init__(self)
         self.Channels = InChans
 
-        Dev = self.GetDevName()
+#        Dev = self.GetDevName()
+        Dev = 'Dev1/{}'
         for Ch in self.Channels:
             print Ch
             self.CreateAIVoltageChan(Dev.format(Ch), "",
@@ -151,7 +152,8 @@ class WriteAnalog(Daq.Task):
     def __init__(self, Channels):
 
         Daq.Task.__init__(self)
-        Dev = self.GetDevName()
+#        Dev = self.GetDevName()
+        Dev = 'Dev1/{}'
         for Ch in Channels:
             self.CreateAOVoltageChan(Dev.format(Ch), "",
                                      -5.0, 5.0, Daq.DAQmx_Val_Volts, None)
@@ -212,7 +214,8 @@ class WriteDigital(Daq.Task):
     '''
     def __init__(self, Channels):
         Daq.Task.__init__(self)
-        Dev = self.GetDevName()
+#        Dev = self.GetDevName()
+        Dev = 'Dev1/{}'
         for Ch in Channels:
             self.CreateDOChan(Dev.format(Ch), "",
                               Daq.DAQmx_Val_ChanForAllLines)
