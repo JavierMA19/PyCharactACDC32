@@ -50,8 +50,7 @@ class ReadAnalog(Daq.Task):
         Daq.Task.__init__(self)
         self.Channels = InChans
 
-#        Dev = self.GetDevName()
-        Dev = 'Dev1/{}'
+        Dev = self.GetDevName()
         for Ch in self.Channels:
             print Ch
             self.CreateAIVoltageChan(Dev.format(Ch), "",
@@ -71,6 +70,7 @@ class ReadAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
@@ -152,8 +152,7 @@ class WriteAnalog(Daq.Task):
     def __init__(self, Channels):
 
         Daq.Task.__init__(self)
-#        Dev = self.GetDevName()
-        Dev = 'Dev1/{}'
+        Dev = self.GetDevName()
         for Ch in Channels:
             self.CreateAOVoltageChan(Dev.format(Ch), "",
                                      -5.0, 5.0, Daq.DAQmx_Val_Volts, None)
@@ -169,6 +168,7 @@ class WriteAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
@@ -214,8 +214,7 @@ class WriteDigital(Daq.Task):
     '''
     def __init__(self, Channels):
         Daq.Task.__init__(self)
-#        Dev = self.GetDevName()
-        Dev = 'Dev1/{}'
+        Dev = self.GetDevName()
         for Ch in Channels:
             self.CreateDOChan(Dev.format(Ch), "",
                               Daq.DAQmx_Val_ChanForAllLines)
@@ -231,6 +230,7 @@ class WriteDigital(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
