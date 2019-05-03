@@ -29,7 +29,7 @@ from setuptools import setup, find_packages
 _version = '0.0.2.1'
 
 long_description = """
-                   Library for GFET analysis tools                   
+                   Library for GFET analysis tools
                    """
 
 install_requires = ['numpy',
@@ -42,7 +42,7 @@ install_requires = ['numpy',
                     ]
 
 console_scripts = ['GFETCharactGui32 = PyCharactACDC32.GuiCharact32:main',
-                  ]
+                   ]
 
 entry_points = {'console_scripts': console_scripts, }
 
