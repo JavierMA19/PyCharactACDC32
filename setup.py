@@ -26,7 +26,7 @@ Created on Thu Dec 21 18:30:42 2017
 
 from setuptools import setup, find_packages
 
-_version = '0.0.2.1b'
+_version = '0.0.2.2b'
 
 long_description = """
                    Library for 32-channel GFET analysis tools(fix Dev1)
