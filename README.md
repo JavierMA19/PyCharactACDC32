@@ -18,7 +18,7 @@ pip install PyCharactACDC32
 * matplotlib
 * quantities
 * scipy
-* neo>=0.5.2
+* neo==0.6.1
 * nixio
 
 
