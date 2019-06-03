@@ -22,7 +22,7 @@ import deepdish as dd
 
 #import PyGFET.DataStructures as PyData
 import PyGFET.PlotDataClass as PyFETpl
-import PyCharactACDC32.Charact32Core as PyCharact
+import CharactCore32 as PyCharact
 from PyGFET.RecordPlot import PltSlot, PlotRecord
 
 #import PyDAQmx as Daq
