@@ -70,6 +70,7 @@ class ReadAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
@@ -167,6 +168,7 @@ class WriteAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
@@ -228,6 +230,7 @@ class WriteDigital(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
+        value.split(',')[0]
         Dev = value + '/{}'
 
         return Dev
