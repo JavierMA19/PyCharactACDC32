@@ -70,8 +70,16 @@ class ReadAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
-        value.split(',')[0]
-        Dev = value + '/{}'
+
+        Dev = None
+        value = value.replace(' ', '')
+        for dev in value.split(','):
+            if dev.startswith('Sim'):
+                continue
+            Dev = dev + '/{}'
+
+        if Dev is None:
+            print 'ERRROORR dev not found ', value
 
         return Dev
 
@@ -160,6 +168,7 @@ class WriteAnalog(Daq.Task):
         self.StopTask()
 
     def GetDevName(self,):
+        print 'ReadAnalog GetDevName'
         # Get Device Name of Daq Card
         n = 1024
         buff = ctypes.create_string_buffer(n)
@@ -168,8 +177,16 @@ class WriteAnalog(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
-        value.split(',')[0]
-        Dev = value + '/{}'
+
+        Dev = None
+        value = value.replace(' ', '')
+        for dev in value.split(','):
+            if dev.startswith('Sim'):
+                continue
+            Dev = dev + '/{}'
+
+        if Dev is None:
+            print 'ERRROORR dev not found ', value
 
         return Dev
 
@@ -222,7 +239,9 @@ class WriteDigital(Daq.Task):
         self.DisableStartTrig()
         self.StopTask()
 
-    def GetDevName(self):
+    def GetDevName(self,):
+        print 'ReadAnalog GetDevName'
+        # Get Device Name of Daq Card
         n = 1024
         buff = ctypes.create_string_buffer(n)
         Daq.DAQmxGetSysDevNames(buff, n)
@@ -230,8 +249,16 @@ class WriteDigital(Daq.Task):
             value = buff.value.decode()
         else:
             value = buff.value
-        value.split(',')[0]
-        Dev = value + '/{}'
+
+        Dev = None
+        value = value.replace(' ', '')
+        for dev in value.split(','):
+            if dev.startswith('Sim'):
+                continue
+            Dev = dev + '/{}'
+
+        if Dev is None:
+            print 'ERRROORR dev not found ', value
 
         return Dev
 
