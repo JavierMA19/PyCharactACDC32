@@ -141,7 +141,7 @@ class CharacLivePlot():
             self.PlotSwAC.Fig.canvas.draw()
 
     def PlotFFT(self, FFT):
-        print 'CharacLivePlot PlotFFT'
+        print('CharacLivePlot PlotFFT')
 #        self.FFTFig, self.FFTAxs = plt.subplots()
 #        self.FFTAxs.ticklabel_format(axis='y', style='sci',
 #                                     scilimits=(-2, 2))
@@ -323,12 +323,12 @@ class CharactAPP(QtWidgets.QMainWindow):
 
     def ButSweepClick(self):
         if self.Charac is None:
-            print 'Init Channels first'
+            print('Init Channels first')
             return
 
         # Event Start button
         if self.Charac.CharactRunning:
-            print 'Stop Button'
+            print('Stop Button')
             self.Charac.StopCharac()
         else:
             self.SetEnableObjects(val=False,
@@ -355,7 +355,7 @@ class CharactAPP(QtWidgets.QMainWindow):
                 self.CheckPSDConfig()
 
             if self.ChckFFT.isChecked():
-                print 'FFT checked'
+                print('FFT checked')
                 self.Charac.EventFFTDone = self.CharFFTCallBack
 
             if not self.ChckSaveData.isChecked():
@@ -369,7 +369,7 @@ class CharactAPP(QtWidgets.QMainWindow):
             if self.Charac.CharactRunning:
                 self.ButSweep.setText('Stop')
             else:
-                print 'ERROR'
+                print('ERROR')
 
     def SweepVariables(self):
         if self.ChckSP.isChecked():
@@ -410,7 +410,7 @@ class CharactAPP(QtWidgets.QMainWindow):
                         self.Charac.BodeSignal.Vpp[0]))
 
     def SetBodeConfig(self):
-        print 'Gui SetBodeConfig'
+        print('Gui SetBodeConfig')
         if self.SpnFreqMin.value() and self.SpnFreqMax.value() > 0:
             self.Charac.SetBodeConfig(FreqMin=self.SpnFreqMin.value(),
                                       FreqMax=self.SpnFreqMax.value(),
@@ -467,7 +467,7 @@ class CharactAPP(QtWidgets.QMainWindow):
 ###############################################################################
     def ButContClick(self):  # Evento button TimeCont
         if self.Charac is None:
-            print 'Init Channels first'
+            print('Init Channels first')
             return
 
         if self.Charac.CharactRunning:
@@ -502,7 +502,7 @@ class CharactAPP(QtWidgets.QMainWindow):
             if self.Charac.CharactRunning:
                 self.ButCont.setText('Stop')
             else:
-                print 'ERROR'
+                print('ERROR')
 
 #    def TimePlotConfig(self, Config):
 #        if Config == 'DC':
@@ -518,7 +518,7 @@ class CharactAPP(QtWidgets.QMainWindow):
 #        self.SetEnableObjects(val=False, Objects=self.ConfigTP)
 
     def SetTestSignalConfig(self):
-        print 'Gui SetTestSignalConfig'
+        print('Gui SetTestSignalConfig')
         self.Charac.SetContSig(FreqMin=self.SpnTestFreqMin.value(),
                                FreqMax=self.SpnTestFreqMax.value(),
                                nFreqs=self.SpnTestNFreqs.value(),
@@ -563,7 +563,7 @@ class CharactAPP(QtWidgets.QMainWindow):
 ###############################################################################
 
     def CharSweepDoneCallBack(self, Dcdict, Acdict):
-        print 'Gui sweep done save data'
+        print('Gui sweep done save data')
         if self.ChckSaveData.isChecked():
             Filename = self.FileName + "{}-Cy{}.h5".format('', self.Cycle)
             self.LblPath.setText(Filename)
@@ -575,44 +575,44 @@ class CharactAPP(QtWidgets.QMainWindow):
         self.NextCycle()
 
     def CharBiasDoneCallBack(self, Dcdict):
-        print 'Gui bias done refresh'
+        print('Gui bias done refresh')
         self.PlotSweep.UpdateSweepDcPlots(Dcdict)
         if not self.Charac.CharactRunning:
             self.StopSweep()
 
     def CharFFTCallBack(self, FFT):
-        print 'Gui FFT done callback'
+        print('Gui FFT done callback')
         if self.ChckFFT.isChecked():
             self.PlotSweep.PlotFFT(FFT[1:])
 
     def CharAcDataAcq(self, Ids, time):
-        print 'Gui AC attemp refresh'
+        print('Gui AC attemp refresh')
         self.PlotSweep.UpdateTimeAcViewPlot(Ids, time)
 
     def CharACDoneCallBack(self, Acdict):
-        print' Gui ACPlots done refresh'
+        print('Gui ACPlots done refresh')
         self.PlotSweep.UpdateAcPlots(Acdict)
         if not self.Charac.CharactRunning:
             self.StopSweep()
 
     def CharBiasAttemptCallBack(self, Ids, Time, Dev):
-        print 'Gui attemp refresh'
+        print('Gui attemp refresh')
         self.PlotSweep.UpdateTimeViewPlot(Ids, Time, Dev)
         if not self.Charac.CharactRunning:
             self.StopSweep()
 
     def CharContDataCallback(self, tstop):
-        print 'Gui Continuous Data Done Callback'
+        print('Gui Continuous Data Done Callback')
         if not self.ChckPauseCont.isChecked():
             time = (tstop - self.SpnWindow.value()*pq.s, tstop)
-            print tstop
+            print(tstop)
             if self.PlotCont:
                 self.PlotCont.PlotUpdate(Time=time)
 
 # Stop Events
 ###############################################################################
     def StopSweep(self):
-        print 'Stop'
+        print('Stop')
         self.SetEnableObjects(val=True, Objects=self.SweepEnableObjects)
         self.Charac.SetBias(Vds=0, Vgs=0)
         self.Charac.SetDigitalSignal(Signal=np.array([0, 0, 0, 0, 0, 0, 0, 0,
@@ -632,7 +632,7 @@ class CharactAPP(QtWidgets.QMainWindow):
     def ChckSaveDataChanged(self):
         if self.ChckSaveData.isChecked():
             self.FileName, _ = QFileDialog.getSaveFileName(self, 'Save File')
-            print self.FileName
+            print(self.FileName)
             if not self.FileName:
                 self.ChckSaveData.setChecked(False)
                 return
