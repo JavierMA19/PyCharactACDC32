@@ -6,8 +6,7 @@ Created on Tue Jul 03 10:11:14 2018
 """
 import sys
 import ctypes
-import PyGFET.DataStructures as PyData
-from PyGFET.RecordCore import NeoRecord
+import PyGFETdb.DataStructures as PyData
 import PyDAQmx as Daq
 from ctypes import byref, c_int32
 import numpy as np
