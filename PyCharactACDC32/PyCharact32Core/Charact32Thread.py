@@ -200,7 +200,7 @@ class SampSetParam(pTypes.GroupParameter):
 
         self.Channels = self.ChsConfig.param('Channels')
         self.GateChannel = self.ChsConfig.param('GateChannel')
-        self.Configuration = self.ChsConfig.param('Configuration')
+        # self.Configuration = self.ChsConfig.param('Configuration')
         self.Cycles = self.ChsConfig.param('Cycles')
 
         self.DCGain = self.ChsConfig.param('DCGain')
@@ -209,12 +209,12 @@ class SampSetParam(pTypes.GroupParameter):
         # Init Settings
         self.on_Channels_Changed()
         self.on_Gain_Changed()
-        self.on_Configuration_Changed()
+        # self.on_Configuration_Changed()
 
         # Signals
         self.Channels.sigTreeStateChanged.connect(self.on_Channels_Changed)
         self.GateChannel.sigTreeStateChanged.connect(self.on_Channels_Changed)
-        self.Configuration.sigTreeStateChanged.connect(self.on_Configuration_Changed)
+        # self.Configuration.sigTreeStateChanged.connect(self.on_Configuration_Changed)
         self.DCGain.sigValueChanged.connect(self.on_Gain_Changed)
         self.ACGain.sigValueChanged.connect(self.on_Gain_Changed)
 
@@ -235,9 +235,9 @@ class SampSetParam(pTypes.GroupParameter):
             self.ChsConfig.param('DCGain').value()
             self.ChsConfig.param('ACGain').value()
 
-    def on_Configuration_Changed(self):
-        if self.Chs:
-            self.Configuration.value()
+    # def on_Configuration_Changed(self):
+    #     if self.Chs:
+    #         self.Configuration.value()
 
     def GetChannelsConfigKwargs(self):
         ChanKwargs = {}
