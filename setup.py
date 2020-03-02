@@ -26,7 +26,7 @@ Created on Thu Dec 21 18:30:42 2017
 
 from setuptools import setup, find_packages
 
-_version = '0.0.3'
+_version = '0.1'
 
 long_description = """
                    Library for 32-channel GFET analysis tools(fix Dev1)
@@ -39,7 +39,8 @@ install_requires = ['numpy',
                     'neo==0.6.1',
                     'nixio',
                     'deepdish',
-                    'PyGFET',
+                    'PyGFETdb',
+                    'PyqtTools',
                     ]
 
 console_scripts = ['GFETCharactGui32 = PyCharactACDC32.GuiCharact32:main',
