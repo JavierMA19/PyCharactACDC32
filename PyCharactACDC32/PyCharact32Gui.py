@@ -328,7 +328,10 @@ class MainWindow(Qt.QWidget):
 
     def CharSweepDoneCallBack(self, Dcdict, Acdict):
         if self.FileName:
-            Filename = self.FileName + "{}-Cy{}.h5".format('', self.initCy)
+            if self.FileName.endswith('.h5'):
+                Filename = self.FileName.replace('.h5', '{}-Cy{}.h5'.format('', self.initCy))
+            else:
+                Filename = self.FileName + "{}-Cy{}.h5".format('', self.initCy)
             if Acdict:
                 dd.io.save(Filename, (Dcdict, Acdict), ('zlib', 1))
 #                pickle.dump(Acdict, open('SaveDcData.pkl', 'wb'))
