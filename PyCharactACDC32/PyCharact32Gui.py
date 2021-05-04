@@ -15,6 +15,7 @@ import numpy as np
 import os
 import sys
 import deepdish as dd
+import pickle
 import matplotlib.pyplot as plt
 from pyqtgraph.parametertree import Parameter, ParameterTree
 
@@ -328,15 +329,21 @@ class MainWindow(Qt.QWidget):
 
     def CharSweepDoneCallBack(self, Dcdict, Acdict):
         if self.FileName:
-            if self.FileName.endswith('.h5'):
-                Filename = self.FileName.replace('.h5', '{}-Cy{}.h5'.format('', self.initCy))
-            else:
-                Filename = self.FileName + "{}-Cy{}.h5".format('', self.initCy)
-            if Acdict:
-                dd.io.save(Filename, (Dcdict, Acdict), ('zlib', 1))
-#                pickle.dump(Acdict, open('SaveDcData.pkl', 'wb'))
-            else:
-                dd.io.save(Filename, Dcdict, ('zlib', 1))
+            Filename = self.FileName + "{}-Cy{}.pkl".format('', self.initCy)
+            with open(Filename, "wb") as f:
+                if Acdict:
+                    pickle.dump((Dcdict, Acdict), f)
+                else:
+                    pickle.dump(Dcdict, f)
+#             if self.FileName.endswith('.h5'):
+#                 Filename = self.FileName.replace('.h5', '{}-Cy{}.h5'.format('', self.initCy))
+#             else:
+                
+#             if Acdict:
+#                 dd.io.save(Filename, (Dcdict, Acdict), ('zlib', 1))
+# #                pickle.dump(Acdict, open('SaveDcData.pkl', 'wb'))
+#             else:
+#                 dd.io.save(Filename, Dcdict, ('zlib', 1))
         self.NextCycle()
 
     def CharBiasDoneCallBack(self, Dcdict):
