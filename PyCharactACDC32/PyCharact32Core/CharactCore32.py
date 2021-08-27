@@ -146,7 +146,10 @@ class ChannelsConfig():
         print('ChannelsConfig SetBias Vgs ->', Vgs, 'Vds ->', Vds)
         self.VdsOut.SetVal(Vds)
         self.VsOut.SetVal(-Vgs)
+        # self.VsOut.SetVal(Vgs)
+
         self.BiasVd = Vds-Vgs
+        self.Vsig.SetVal(self.BiasVd)
         self.Vgs = Vgs
         self.Vds = Vds
 
@@ -556,6 +559,8 @@ class DataProcess(ChannelsConfig, FFTBodeAnalysis):
 
     def CalcBiasData(self, Data):
         print('DataProcess CalcBiasData')
+        print(Data)
+        print(self.BiasVd)
 
         data = Data
         r, c = data.shape
@@ -564,14 +569,18 @@ class DataProcess(ChannelsConfig, FFTBodeAnalysis):
         Dev = np.abs(np.mean(mm))
         print('DataProcess Attempt ', Dev)
         if self.EventBiasAttempt:
-            Ids = (data-self.BiasVd)/self.IVGainDC
+            Ids = data/(self.IVGainDC*10)
+
+            # Ids = (data-self.BiasVd)/self.IVGainDC
             if not self.EventBiasAttempt(Ids,
                                          x*(1/np.float32(self.Inputs.Fs)),
                                          Dev):
                 return  # Cancel execution
 
         if (Dev < self.DevCondition):
-            Ids = (oo-self.BiasVd)/self.IVGainDC
+            Ids = oo/(self.IVGainDC*10)
+
+            # Ids = (oo-self.BiasVd)/self.IVGainDC
 
             if self.EventBiasDone:
                 self.EventBiasDone(Ids)
